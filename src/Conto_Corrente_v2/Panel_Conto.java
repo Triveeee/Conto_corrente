@@ -80,6 +80,8 @@ public class Panel_Conto extends JPanel implements Runnable {
             if(e.getSource().equals(b2)){
                 comand = false;
             }
+            //true --> inizo
+            //false --> stop
             if(e.getSource().equals(start)){
                 cond = true;
             }
