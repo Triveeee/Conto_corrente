@@ -20,7 +20,7 @@ public class App extends JFrame implements Runnable {
     private double tot_conto = 1000;
 
     private Thread t1;
-    //private Thread t2;
+    private Thread t2;
 
     private Conto_corrente conto_corrente;
 
@@ -45,8 +45,7 @@ public class App extends JFrame implements Runnable {
         lbl1 = new  JLabel("CONTO = " + tot_conto);
 
         t1 = new Thread(this);
-        t1.start();
-        //t2 = new Thread(this);
+        t2 = new Thread(this);
 
         conto_corrente = new Conto_corrente();
 
@@ -85,7 +84,8 @@ public class App extends JFrame implements Runnable {
                 comand = false;
             }
             if(e.getSource().equals(start)){
-                //t2.start();
+                t1.start();
+                t2.start();
             }
             
         }

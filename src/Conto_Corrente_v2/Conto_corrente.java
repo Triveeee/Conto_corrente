@@ -17,7 +17,7 @@ public class Conto_corrente extends JPanel {
         }
     }
     
-    public double getTot_conto() {
+    public synchronized double getTot_conto() {
         return tot_conto;
     }
 
