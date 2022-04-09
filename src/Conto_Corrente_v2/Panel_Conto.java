@@ -1,6 +1,7 @@
 package Conto_Corrente_v2;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,11 +22,11 @@ public class Panel_Conto extends JPanel implements Runnable {
     private Thread t1;
     private Thread t2;
 
-    private Conto_Corrente conto_corrente;
+    private Conto_corrente conto_corrente;
 
-    public Panel_Conto(Conto_Corrente conto_corrente){
-
+    public Panel_Conto(Conto_corrente conto_corrente){
         this.conto_corrente = conto_corrente;
+
 
         tot_conto = 1000;
         comand = true;
@@ -57,9 +58,15 @@ public class Panel_Conto extends JPanel implements Runnable {
         this.add(p1);
         this.add(p2);
 
+        Box box = Box.createVerticalBox();
+        p1.setLayout(new GridLayout( 0 , 2 , 5 ,5 ));
         p1.add(txt1);
-        p1.add(b1);
-        p1.add(b2);
+        p1.add(box);
+
+        p1.setMaximumSize(new Dimension(200 ,200));
+
+        box.add(b1);
+        box.add(b2);
 
         p2.add(lbl1);
         p2.add(start);
@@ -101,13 +108,14 @@ public class Panel_Conto extends JPanel implements Runnable {
                 try {
                     if(cond == true){
                         tot_conto = conto_corrente.movimento(Double.parseDouble(txt1.getText()) , comand);
+                        System.out.println(Thread.currentThread().getName());
                         cond = false;
                     }
     
                     Thread.sleep(100);
     
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(this, "Errore" + e, "Errore", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Errore  " + e, "Errore", JOptionPane.ERROR_MESSAGE);
                     cond = false;
     
                 } catch (InterruptedException e) {

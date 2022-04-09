@@ -1,16 +1,17 @@
 package Conto_Corrente_v2;
 
-public class Conto_Corrente {
+public class Conto_corrente {
 
     private double tot_conto;
 
-    public Conto_Corrente(){
+    public Conto_corrente(){
         tot_conto = 1000;
     }
 
     public  double  movimento (double importo , boolean comand){
-        if (importo > tot_conto){
+        if ((importo > tot_conto) && (comand == true) ){
             importo = tot_conto;
+            System.out.println("ciao");
         }
 
         if(comand == true){
